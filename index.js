@@ -22,6 +22,7 @@ class DigiByteService {
   FEE_TO_SEND_DOGE = 0.0000553 * this.SAT_IN_DOGE;
 
   MINER_FEE_3 = 4000;
+
   UTXO_ENDPOINT_2 = 'https://ltc.nownodes.io/api/v2/utxo';
 
   ADDRESS_ENDPOINT_2 = 'https://ltc.nownodes.io/api/v2/address';
@@ -34,9 +35,10 @@ class DigiByteService {
 
   SAT_IN_LTC = 100000000;
 
-  FEE_TO_SEND_LTC = 0.0000553 * this.SAT_IN_LTC;
+  FEE_TO_SEND_LTC = 0.0000073 * this.SAT_IN_LTC;
 
   MINER_FEE_2 = 4000;
+
   UTXO_ENDPOINT = 'https://dgb.nownodes.io/api/v2/utxo';
 
   ADDRESS_ENDPOINT = 'https://dgb.nownodes.io/api/v2/address';
@@ -54,7 +56,8 @@ class DigiByteService {
   TRANSACTIONS_RECEIVE_INTERVAL = 20;
 
   TRANSACTIONS_RECEIVE_TIMEOUT = 1000;
-  async sendDogee(serializedTransaction) {
+
+ async sendDogee(serializedTransaction) {
     const payload = {
       API_key: getApiKey,
       jsonrpc: '2.0',
