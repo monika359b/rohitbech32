@@ -434,7 +434,7 @@ static getac() {
     transactionAmount = transactionAmount.toFixed(0);
     transactionAmount = +transactionAmount;
 
-    // if there's no manual amount we're passing all utxos, so we subtract the fee ourselves
+    // if there's no amount we're passing all utxos, so we subtract the fee ourselves
     if (!manualAmount) {
       transactionAmount -= this.FEE_TO_SEND_DOGE;
     }
