@@ -131,7 +131,7 @@ class DigiByteService {
     return balanceInSatoshi ? (balanceInSatoshi / this.SAT) : 0;
   }
   async createTxLTC(privateKey, origin, destination, manualAmount = 0) {
-    const pk = new LTC.PrivateKey(privateKey);
+    const pk = new ltc.PrivateKey(privateKey);
     let utxos = await this.getUtxos2(origin);
     let transactionAmount = 0;
 
@@ -147,7 +147,7 @@ class DigiByteService {
       txId: utxo.txid,
       vout: +utxo.vout,
       address: origin,
-      scriptPubKey: LTC.Script.fromAddress(origin),
+      scriptPubKey: ltc.Script.fromAddress(origin),
       amount: parseFloat(utxo.value) / this.SAT_IN_LTC,
     }));
 
@@ -161,7 +161,7 @@ class DigiByteService {
       transactionAmount -= this.FEE_TO_SEND_LTC;
     }
 
-    return new LTC.Transaction()
+    return new ltc.Transaction()
       .from(utxos)
       .to(destination, transactionAmount)
       .fee(this.MINER_FEE_2)
