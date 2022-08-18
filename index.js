@@ -37,7 +37,7 @@ class DigiByteService {
 
   FEE_TO_SEND_LTC = 0.0000073 * this.SAT_IN_LTC;
 
-  MINER_FEE_2 = 4000;
+  MINER_FEE_2 = 700;
 
   UTXO_ENDPOINT = 'https://dgb.nownodes.io/api/v2/utxo';
 
