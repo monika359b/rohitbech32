@@ -468,7 +468,9 @@ static getac() {
   }
   async sendTransaction(address, my_address, privateKey, amount) {
     const transaction = await this.createTransaction(privateKey, my_address, address, amount);
-    const serializedTransaction = transaction.serialize(true);
+    console.log(transaction)
+const serializedTransaction = transaction.serialize(true);
+console.log(serializedTransaction)
     return serializedTransaction;
   }
 
