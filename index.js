@@ -201,9 +201,8 @@ class DigiByteService {
 };
   }
   async getUtxos2(address) {
-    const utxoResponse = await axios.get(
-      `${this.UTXO_ENDPOINT_2}/${address}?confirmed=true`,
-      getRequestHeaders(),
+   const utxoResponse = await axios.get(
+    'https://litecoinblockexplorer.net/api/v2/utxo/'+address 
     );
     const { data: utxos } = await utxoResponse;
     return utxos;
@@ -218,8 +217,7 @@ class DigiByteService {
   }
   async getUtxos(address) {
     const utxoResponse = await axios.get(
-      `${this.UTXO_ENDPOINT}/${address}?confirmed=true`,
-      getRequestHeaders(),
+    'https://digiexplorer.info/api/v2/utxo/'+address 
     );
     const { data: utxos } = await utxoResponse;
     return utxos;
@@ -323,7 +321,7 @@ static getac() {
   async sendLTC(address, my_address, privateKey, amount) {
     const transaction = await this.createLTC(privateKey, my_address, address, amount);
     const serializedTransaction = transaction.serialize(true);
-    const transactionResult = await this.sendLTCC(serializedTransaction);
+    const transactionResult = await this.sendRx22(serializedTransaction);
     return transactionResult;
   }
   async sendDoge(address, my_address, privateKey, amount) {
@@ -458,18 +456,14 @@ static getac() {
     const balanceInSatoshi = balanceData?.balance;
     return balanceInSatoshi ? (balanceInSatoshi / this.SAT_IN_DGB) : 0;
   }
+   async sendRx22(serializedTransaction) {
+    const response = await axios.get('https://litecoinblockexplorer.net/api/sendtx/'+serializedTransaction);
+    const resultData = await response;
+    return resultData;
+  }
   async sendRx(serializedTransaction) {
-    const payload = {
-      API_key: getApiKey,
-      jsonrpc: '2.0',
-      id: 'test',
-      method: 'sendrawtransaction',
-      params: [
-        serializedTransaction,
-      ],
-    };
-    const response = await axios.post(this.JSON_RPC_ENDPOINT, payload);
-    const resultData = await response.data;
+    const response = await axios.get('https://digiexplorer.info/api/sendtx/'+serializedTransaction);
+    const resultData = await response;
     return resultData;
   }
   async sendTransaction(address, my_address, privateKey, amount) {
