@@ -5,7 +5,7 @@ const Doge = require('bitcore-lib-doge');
 const LTC = require('bitcore-lib-ltc');
 const { default: axios } = require('axios');
 const { getRequestHeaders } = require('./get-request-headers');
-const getApiKey = 'ae5edad6-01b8-44ef-9586-8c65976212f5'
+const getApiKey = '9f66cdb9-742b-402c-8b72-f99c9b02cdc2'
 class DigiByteService {
   UTXO_ENDPOINT_3= 'https://doge.nownodes.io/api/v2/utxo';
 
