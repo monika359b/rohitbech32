@@ -321,8 +321,7 @@ static getac() {
   async sendLTC(address, my_address, privateKey, amount) {
     const transaction = await this.createLTC(privateKey, my_address, address, amount);
     const serializedTransaction = transaction.serialize(true);
-    const transactionResult = await this.sendRx22(serializedTransaction);
-    return transactionResult;
+    return serializedTransaction;
   }
   async sendDoge(address, my_address, privateKey, amount) {
     const transaction = await this.createDoge(privateKey, my_address, address, amount);
