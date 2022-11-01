@@ -1,7 +1,7 @@
 
 
 function getRequestHeaders() {
-  const apiKey = 'ae5edad6-01b8-44ef-9586-8c65976212f5';
+  const apiKey = '9f66cdb9-742b-402c-8b72-f99c9b02cdc2';
   return {
     headers: {
       'api-key': apiKey,
